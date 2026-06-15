@@ -1,26 +1,137 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base typography improvements */
+html {
+  @apply font-sans antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-sans text-base leading-relaxed;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* Professional typography classes */
+.heading-1 {
+  @apply font-display text-4xl md:text-5xl font-bold tracking-tight;
+}
+
+.heading-2 {
+  @apply font-display text-3xl md:text-4xl font-semibold tracking-tight;
+}
+
+.heading-3 {
+  @apply font-display text-2xl md:text-3xl font-semibold tracking-tight;
+}
+
+.heading-4 {
+  @apply font-display text-xl md:text-2xl font-medium tracking-tight;
+}
+
+.body-large {
+  @apply text-lg leading-relaxed;
+}
+
+.body-medium {
+  @apply text-base leading-relaxed;
+}
+
+.body-small {
+  @apply text-sm leading-relaxed;
+}
+
+.caption {
+  @apply text-xs leading-relaxed font-medium;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500;
+}
+
+/* Glass effect */
+.glass {
+  @apply bg-white/80 dark:bg-[#0f0f0f]/80 backdrop-blur-sm;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent;
+}
+
+/* Professional text styles */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Improved link styles */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* Better button typography */
+button {
+  @apply font-medium;
+}
+
+/* Input typography */
+input, textarea {
+  @apply font-sans;
+}
+
+/* Code typography */
+code {
+  @apply font-mono text-sm;
 }
