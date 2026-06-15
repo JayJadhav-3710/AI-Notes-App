@@ -20,7 +20,9 @@ export default function FavoritesPage() {
   useEffect(() => {
     fetch("/api/notes")
       .then((res) => res.json())
-      .then((data) => setNotes(data.filter((n: Note) => n.favorite && !n.summary)));
+      .then((data) =>
+        setNotes(Array.isArray(data) ? data.filter((n: Note) => n.favorite) : [])
+      );
   }, []);
 
   return (
