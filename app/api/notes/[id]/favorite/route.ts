@@ -4,8 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Note from "@/models/Note";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../../auth/[...nextauth]/route";
-
+import { authOptions } from "@/lib/auth";
 export async function PUT(
   req: NextRequest,
   { params }: { params: { id: string } }

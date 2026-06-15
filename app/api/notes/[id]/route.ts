@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Note from "@/models/Note";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../auth/[...nextauth]/route";
-
+import { authOptions } from "@/lib/auth";
 // DELETE /api/notes/[id] - Delete a specific note (only if owned by user)
 export async function DELETE(
   req: NextRequest,

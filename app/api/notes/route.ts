@@ -3,8 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Note from "@/models/Note";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
-
+import { authOptions } from "@/lib/auth";
 // GET: Fetch all notes for the logged-in user
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);

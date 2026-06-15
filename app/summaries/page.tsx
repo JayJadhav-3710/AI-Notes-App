@@ -21,8 +21,7 @@ export default function SummariesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
-      <Navbar />
-      <Sidebar />
+<Navbar search="" setSearch={() => {}} />      <Sidebar />
       <main className="ml-64 pt-16 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-8 py-8">
           <div className="mb-10">
