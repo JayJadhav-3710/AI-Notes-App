@@ -10,7 +10,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const navItems = [
-    { icon: FileText, label: "All Notes", href: "/" },
+    { icon: FileText, label: "All Notes", href: "/notes" },
     { icon: Sparkles, label: "AI Summaries", href: "/summaries" },
     { icon: Star, label: "Favorites", href: "/favorites" },
   ];
@@ -51,7 +51,7 @@ export default function Sidebar() {
         {/* Navigation */}
         <nav className="px-3 py-4 space-y-1">
           {/* Add Note Button */}
-          <Link href="/" className="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] rounded-lg transition-colors duration-200">
+          <Link href="/notes" className="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] rounded-lg transition-colors duration-200">
             <Plus size={16} />
             {open && <span>Add Note</span>}
           </Link>

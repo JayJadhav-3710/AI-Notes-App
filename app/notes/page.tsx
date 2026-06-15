@@ -61,6 +61,10 @@ export default function Home() {
       body: JSON.stringify({ title, content }),
       headers: { "Content-Type": "application/json" },
     });
+    if (!res.ok) {
+      alert("Failed to add note. Please try again.");
+      return;
+    }
     const newNote = await res.json();
     setNotes((prev) => [...prev, newNote]);
     setTitle("");
@@ -81,12 +85,19 @@ export default function Home() {
       });
       if (!res.ok) throw new Error("Failed to summarize");
       const data = await res.json();
+      const persistRes = await fetch(`/api/notes/${noteId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ summary: data.summary }),
+      });
+      if (!persistRes.ok) throw new Error("Failed to save summary");
+      const updatedNote = await persistRes.json();
       setNotes((prev) =>
-        prev.map((n) =>
-          n._id === noteId ? { ...n, summary: data.summary } : n
-        )
+        prev.map((n) => (n._id === noteId ? updatedNote : n))
       );
-      setSelectedNote((prev) => prev && prev._id === noteId ? { ...prev, summary: data.summary } : prev);
+      setSelectedNote((prev) =>
+        prev && prev._id === noteId ? updatedNote : prev
+      );
     } catch (error) {
       alert("Failed to summarize note. Please try again.");
     } finally {
